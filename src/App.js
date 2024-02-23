@@ -73,7 +73,7 @@ function App() {
   return (
     <div className="App">
       <h1>CRUD App</h1>
-      <div>
+      <div className="input-container">
         <input
           type="text"
           placeholder="Enter task"
@@ -84,7 +84,7 @@ function App() {
           {editingTaskId !== null ? 'Update Task' : 'Add Task'}
         </button>
       </div>
-      <div>
+      <div className="search-container">
         <input
           type="text"
           placeholder="Search tasks"
@@ -97,7 +97,7 @@ function App() {
           <option value="date">Date</option>
         </select>
       </div>
-      <ul>
+      <ul className="task-list">
         {filteredTasks.map((task) => (
           <li key={task.id}>
             {editingTaskId === task.id ? (
@@ -109,10 +109,12 @@ function App() {
             ) : (
               task.title
             )}
-            <button onClick={() => editingTaskId === task.id ? updateTask() : editTask(task.id)}>
-              {editingTaskId === task.id ? 'Save' : 'Edit'}
-            </button>
-            <button onClick={() => deleteTask(task.id)}>Delete</button>
+            <div className="button-container">
+              <button onClick={() => editingTaskId === task.id ? updateTask() : editTask(task.id)}>
+                {editingTaskId === task.id ? 'Save' : 'Edit'}
+              </button>
+              <button onClick={() => deleteTask(task.id)}>Delete</button>
+            </div>
           </li>
         ))}
       </ul>
